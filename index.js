@@ -67,7 +67,7 @@ const createTeam = function() {
 
         .then((newResponse) => {
             if (response.role === "Manager") {
-            var manager = new Manager(response.name, response.id, response.email, response.role, response.officeNumber);
+            const manager = new Manager(response.name, response.id, response.email, response.role, response.officeNumber);
             teamMembers.push(manager);
             ManagerHtml =  
             `<div class="card shadow" style="width: 18rem;">
@@ -109,6 +109,21 @@ const createTeam = function() {
            else if (response.role === "Intern") {
             const intern = new Intern(response.name, response.id, response.email, response.role, newResponse.school);
             teamMembers.push(intern);
+            var InternHtml =
+            `<div class="card shadow" style="width: 18rem;">
+            <div class="card-header bg-primary text-white">
+            <h2 class="card-title">${response.name}</h2>
+            <h3 class="card-title"><i class="fas fa-user-graduate mr-2">${response.role}</i></h3>
+        </div>
+        <div class="card-body bg-light">
+            <ul class="list-group">
+                <li class="list-group-item">ID: ${response.id}</li>
+                <li class="list-group-item">Email: <a href="mailto:${response.email}"> ${response.email}</a></li>
+                <li class="list-group-item"> School: ${newResponse.school}</li>
+            </ul>
+        </div>
+    </div>
+    </div>`
           }
           if (newResponse.addMember) {
             createTeam();
@@ -147,8 +162,12 @@ const createTeam = function() {
                     </div>
                 </div>
             </div>`
-
-            var HTML = starterHtml += ManagerHtml += EngineerHtml;
+            
+            var closingHtml = `
+            </body>
+            </html>`
+            
+            var HTML = starterHtml += ManagerHtml += EngineerHtml +=InternHtml += closingHtml;
 
 
             fs.writeFile('Team_Generator.HTML', HTML, (err) => {
