@@ -4,9 +4,10 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const fs = require("fs");
 
-
+// creates an array for team members to be added to
 const teamMembers = [];
 
+// Sets a function to a variable which collects user responses through prompts and then generates them to template literals 
 const createTeam = function() {
   inquirer
   .prompt([
@@ -34,6 +35,7 @@ const createTeam = function() {
       },
     ])
     
+    // Creates prompts that run based on the previous user response to their role using 'when' functions
    .then((response)=> {
         inquirer
         .prompt([
@@ -64,11 +66,14 @@ const createTeam = function() {
             name: 'addMember',
           },
         ])
-
+        
+        // Pushes individual members to the team array and also generates html from their responses based on role
         .then((newResponse) => {
             if (response.role === "Manager") {
             const manager = new Manager(response.name, response.id, response.email, response.role, response.officeNumber);
             teamMembers.push(manager);
+            
+            // Template literal for the html of the manager
             ManagerHtml =  
            `
            <div class="card shadow mr-5" style="width: 18rem;">
@@ -89,6 +94,8 @@ const createTeam = function() {
           else if (response.role === "Engineer") {
             const engineer = new Engineer(response.name, response.id, response.email, response.role, newResponse.github);
             teamMembers.push(engineer);
+            
+            // Template literal for the Engineer 
             EngineerHtml =  
             `
             <div class="card shadow mr-5" style="width: 18rem;">
@@ -109,6 +116,8 @@ const createTeam = function() {
            else if (response.role === "Intern") {
             const intern = new Intern(response.name, response.id, response.email, response.role, newResponse.school);
             teamMembers.push(intern);
+           
+        //    Template literal for the Intern 
             var InternHtml =
             `
             <div class="card shadow mr-5" style="width: 18rem;">
@@ -125,12 +134,15 @@ const createTeam = function() {
         </div>
     </div>`
           }
+
+        //   Using recursion to call the function within itself to add another team member if desired
           if (newResponse.addMember) {
             createTeam();
           } 
           
           else {
-
+        
+     // Template literal for the starter html
         var starterHtml = 
     `<!DOCTYPE html>
     <html lang="en">
@@ -159,25 +171,27 @@ const createTeam = function() {
         <div class="container">
             <div class="row">
                 <div class="col-12 d-flex justify-content-center mt-5">`
-            
-            var closingHtml = 
+   
+ //  Template literal for the closing tags of the html  
+ var closingHtml = 
 `
     </div>
    </div>
   </div>
 </body>
 </html>`
-            
-            var HTML = starterHtml += ManagerHtml += EngineerHtml +=InternHtml += closingHtml;
+    
+// This joins all of the template literals into one variable to be generated
+     var HTML = starterHtml += ManagerHtml += EngineerHtml +=InternHtml += closingHtml;
 
-
-            fs.writeFile('Team_Generator.HTML', HTML, (err) => {
-                if (err) {
-                  throw err;
-                }
-                console.log("Success!");
-                });
-            };
+// This writes the HTML file using the HTML variable and throws an err if one is found or logs success! if successful
+     fs.writeFile('Team_Generator.HTML', HTML, (err) => {
+           if (err) {
+            throw err;
+          }
+          console.log("Success!");
+          });
+     };
             
       });
     })
@@ -188,6 +202,7 @@ const createTeam = function() {
     });
 };
 
+// Calling initial function
 createTeam(); 
 
 
