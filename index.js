@@ -71,7 +71,7 @@ const createTeam = function() {
             teamMembers.push(manager);
             ManagerHtml =  
            `
-           <div class="card shadow" style="width: 18rem;">
+           <div class="card shadow mr-5" style="width: 18rem;">
             <div class="card-header bg-primary text-white">
             <h2 class="card-title">${response.name}</h2>
             <h3 class="card-title"><i class="fas fa-mug-hot mr-2">${response.role}</i></h3>
@@ -91,7 +91,7 @@ const createTeam = function() {
             teamMembers.push(engineer);
             EngineerHtml =  
             `
-            <div class="card shadow" style="width: 18rem;">
+            <div class="card shadow mr-5" style="width: 18rem;">
             <div class="card-header bg-primary text-white">
             <h2 class="card-title">${response.name}</h2>
             <h3 class="card-title"><i class="fas fa-glasses mr-2">${response.role}</i></h3>
@@ -111,7 +111,7 @@ const createTeam = function() {
             teamMembers.push(intern);
             var InternHtml =
             `
-            <div class="card shadow" style="width: 18rem;">
+            <div class="card shadow mr-5" style="width: 18rem;">
             <div class="card-header bg-primary text-white">
             <h2 class="card-title">${response.name}</h2>
             <h3 class="card-title"><i class="fas fa-user-graduate mr-2">${response.role}</i></h3>
@@ -158,7 +158,7 @@ const createTeam = function() {
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-12 d-flex justify-content-center">`
+                <div class="col-12 d-flex justify-content-center mt-5">`
             
             var closingHtml = 
 `
