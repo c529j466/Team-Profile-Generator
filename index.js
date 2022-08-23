@@ -70,7 +70,8 @@ const createTeam = function() {
             const manager = new Manager(response.name, response.id, response.email, response.role, response.officeNumber);
             teamMembers.push(manager);
             ManagerHtml =  
-            `<div class="card shadow" style="width: 18rem;">
+           `
+           <div class="card shadow" style="width: 18rem;">
             <div class="card-header bg-primary text-white">
             <h2 class="card-title">${response.name}</h2>
             <h3 class="card-title"><i class="fas fa-mug-hot mr-2">${response.role}</i></h3>
@@ -82,7 +83,6 @@ const createTeam = function() {
                 <li class="list-group-item">Office Number: ${newResponse.officeNumber}</li>
             </ul>
         </div>
-    </div>
     </div>`
           }
 
@@ -90,7 +90,8 @@ const createTeam = function() {
             const engineer = new Engineer(response.name, response.id, response.email, response.role, newResponse.github);
             teamMembers.push(engineer);
             EngineerHtml =  
-            `<div class="card shadow" style="width: 18rem;">
+            `
+            <div class="card shadow" style="width: 18rem;">
             <div class="card-header bg-primary text-white">
             <h2 class="card-title">${response.name}</h2>
             <h3 class="card-title"><i class="fas fa-glasses mr-2">${response.role}</i></h3>
@@ -102,7 +103,6 @@ const createTeam = function() {
                 <li class="list-group-item">GitHub:<a href="https://github.com/${newResponse.github}" target="_blank" rel="noopener noreferrer"> ${newResponse.github}</a></li>
             </ul>
         </div>
-    </div>
     </div>`
           }
 
@@ -110,7 +110,8 @@ const createTeam = function() {
             const intern = new Intern(response.name, response.id, response.email, response.role, newResponse.school);
             teamMembers.push(intern);
             var InternHtml =
-            `<div class="card shadow" style="width: 18rem;">
+            `
+            <div class="card shadow" style="width: 18rem;">
             <div class="card-header bg-primary text-white">
             <h2 class="card-title">${response.name}</h2>
             <h3 class="card-title"><i class="fas fa-user-graduate mr-2">${response.role}</i></h3>
@@ -122,7 +123,6 @@ const createTeam = function() {
                 <li class="list-group-item"> School: ${newResponse.school}</li>
             </ul>
         </div>
-    </div>
     </div>`
           }
           if (newResponse.addMember) {
@@ -132,40 +132,41 @@ const createTeam = function() {
           else {
 
         var starterHtml = 
-        `<!DOCTYPE html>
-        <html lang="en">
+    `<!DOCTYPE html>
+    <html lang="en">
 
-        <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <meta name="Description" content="Enter your description here" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="style.css">
-        <script src="https://kit.fontawesome.com/c502137733.js"></script>
-        
-        <title>Team Generator</title>
-        </head>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/c502137733.js"></script>
+    
+    <title>Team Generator</title>
+    </head>
 
-        <body>
+    <body>
 
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12 jumbotron team-heading bg-danger text-white">
-                        <h1 class="text-center">My Team</h1>
-                    </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 jumbotron team-heading bg-danger text-white">
+                    <h1 class="text-center">My Team</h1>
                 </div>
             </div>
-            <div class="container">
-                <div class="row">
-                    <div class="team-area col-12 d-flex justify-content-center">
-                    </div>
-                </div>
-            </div>`
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center">`
             
-            var closingHtml = `
-            </body>
-            </html>`
+            var closingHtml = 
+`
+    </div>
+   </div>
+  </div>
+</body>
+</html>`
             
             var HTML = starterHtml += ManagerHtml += EngineerHtml +=InternHtml += closingHtml;
 
