@@ -12,6 +12,7 @@ To install the Team generator, a user would need to download the files from the 
 
 Link for video showing the user flow:
    
+https://drive.google.com/file/d/1En5CrZqxXlFqp1zVB8ZU4QmrbhQcJ8jJ/view
 
 ## Credits
 
